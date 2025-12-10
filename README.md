@@ -65,6 +65,18 @@ Lateral movement attempts made toward internal host 10.1.0.188 using cmdkey and 
 
 (Times condensed for GitHub readability; full timeline available in docx)
 
+| Time (UTC) | Event                                               |
+| ---------- | --------------------------------------------------- |
+| 11:55:03   | RemoteInteractive logon from 88.97.178.12           |
+| 18:49:27   | Windows Defender exclusions added                   |
+| 19:04:01   | ARP cache enumeration (`arp -a`)                    |
+| 19:07:46   | Malicious scheduled task created                    |
+| 19:08:26   | Mimikatz module `sekurlsa::logonpasswords` executed |
+| Various    | C2 communication to 78.141.196.6 + discord.com      |
+| Later      | Logs cleared (`wevtutil.exe cl security`)           |
+| Later      | Account "support" added to Administrators           |
+
+
 Time (UTC)	Event
 11:55:03	RemoteInteractive logon from 88.97.178.12
 18:49:27	Windows Defender exclusions added
