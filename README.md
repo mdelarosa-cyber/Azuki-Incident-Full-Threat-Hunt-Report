@@ -98,36 +98,36 @@ C:\Users\...\Temp\wupdate.ps1
 
 Weak remote access controls allowed successful RemoteInteractive login using compromised credentials.
 
-Attacker Objective
+### Attacker Objective
 
-Harvest credentials
+- Harvest credentials
 
-Establish persistent access
+- Establish persistent access
 
-Exfiltrate staged data
+- Exfiltrate staged data
 
-Laterally expand toward 10.1.0.188
+- Laterally expand toward 10.1.0.188
 
-HOW – Attack Chain Overview
+## HOW – Attack Chain Overview
 
-Initial Access → Remote login via compromised credentials
+1. Initial Access → Remote login via compromised credentials
 
-Discovery → Host/network enumeration via ARP
+2. Discovery → Host/network enumeration via ARP
 
-Defense Evasion → Hidden folder, Defender exclusions, log clearing
+3. Defense Evasion → Hidden folder, Defender exclusions, log clearing
 
-Execution → PowerShell script wupdate.ps1
+4. Execution → PowerShell script wupdate.ps1
 
-Persistence → Scheduled task + admin account “support”
+5. Persistence → Scheduled task + admin account “support”
 
-Credential Access → Mimikatz dump from LSASS
+6. Credential Access → Mimikatz dump from LSASS
 
-C2 → HTTPS beaconing + Discord-based exfil
+7. C2 → HTTPS beaconing + Discord-based exfil
 
-Lateral Movement → Use of mstsc.exe targeting 10.1.0.188
+8. Lateral Movement → Use of mstsc.exe targeting 10.1.0.188
 
-IMPACT ASSESSMENT
-Actual Impact
+## IMPACT ASSESSMENT
+### Actual Impact
 
 Full compromise of local credentials
 
