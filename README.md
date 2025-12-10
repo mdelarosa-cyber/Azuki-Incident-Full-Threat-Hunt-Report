@@ -86,16 +86,15 @@ Lateral movement attempts made toward internal host 10.1.0.188 using cmdkey and 
 
 - Exfil Service: discord.com
 
-Malware Locations
-
+### Malware Locations
 C:\ProgramData\WindowsCache\svchost.exe
 
 C:\ProgramData\WindowsCache\export-data.zip
 
 C:\Users\...\Temp\wupdate.ps1
 
-WHY
-Root Cause
+## WHY
+### Root Cause
 
 Weak remote access controls allowed successful RemoteInteractive login using compromised credentials.
 
