@@ -33,7 +33,7 @@ Lateral movement attempts made toward internal host 10.1.0.188 using cmdkey and 
 
 - Host: azuki-sl
 
-WHAT (Attack Narrative)
+## WHAT (Attack Narrative)
 
 RemoteInteractive logon from a public IP compromised host azuki-sl.
 
