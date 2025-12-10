@@ -129,43 +129,44 @@ Weak remote access controls allowed successful RemoteInteractive login using com
 ## IMPACT ASSESSMENT
 ### Actual Impact
 
-Full compromise of local credentials
+- Full compromise of local credentials
 
-Potential compromise of adjacent systems
+- Potential compromise of adjacent systems
 
-Exfiltration of staged archive (export-data.zip)
+- Exfiltration of staged archive (export-data.zip)
 
-Loss of event log telemetry due to security log clearing
+- Loss of event log telemetry due to security log clearing
 
-Risk Level: CRITICAL
-RECOMMENDATIONS
-IMMEDIATE
+## Risk Level: CRITICAL
 
-Disable compromised accounts (kenji.sato, support)
+## RECOMMENDATIONS
+### IMMEDIATE
 
-Isolate azuki-sl from network
+- Disable compromised accounts (kenji.sato, support)
 
-Block outbound traffic to 78.141.196.6 and discord.com
+- Isolate azuki-sl from network
 
-SHORT-TERM (1–7 days)
+- Block outbound traffic to 78.141.196.6 and discord.com
 
-Reset all passwords
+### SHORT-TERM (1–7 days)
 
-Review RDP access policies
+- Reset all passwords
 
-Restore event logging configurations
+- Review RDP access policies
 
-LONG-TERM
+- Restore event logging configurations
 
-Implement MFA for all remote access
+### LONG-TERM
 
-Enforce Defender tamper protection
+- Implement MFA for all remote access
 
-Deploy EDR with behavioral protections and script blocking
+- Enforce Defender tamper protection
 
-Conduct enterprise-wide credential hygiene assessment
+- Deploy EDR with behavioral protections and script blocking
 
-APPENDIX
+- Conduct enterprise-wide credential hygiene assessment
+
+## APPENDIX
 A. Indicators of Compromise (IOCs)
 Category	Indicator	Description
 Attacker IP	88.97.178.12	Initial access source
