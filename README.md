@@ -167,6 +167,29 @@ Weak remote access controls allowed successful RemoteInteractive login using com
 - Conduct enterprise-wide credential hygiene assessment
 
 ## APPENDIX
+
+| Category            | Indicator                               | Description              |
+| ------------------- | --------------------------------------- | ------------------------ |
+| Attacker IP         | 88.97.178.12                            | Initial access source    |
+| C2 Server           | 78.141.196.6:443                        | HTTPS beaconing          |
+| Exfil Channel       | discord.com                             | Encrypted data exfil     |
+| Malware File        | C:\ProgramData\WindowsCache\svchost.exe | Fake Windows binary      |
+| Archive             | export-data.zip                         | Staged exfiltration data |
+| Persistence Account | support                                 | Unauthorized admin       |
+
+| Tactic            | Technique             | ID        | Evidence                   |
+| ----------------- | --------------------- | --------- | -------------------------- |
+| Initial Access    | Valid Accounts        | T1078     | RemoteInteractive login    |
+| Discovery         | Network Discovery     | T1046     | ARP enumeration            |
+| Defense Evasion   | Hide Artifacts        | T1564     | Hidden WindowsCache folder |
+| Defense Evasion   | Modify AV Config      | T1562.001 | Defender exclusions        |
+| Persistence       | Scheduled Task        | T1053.005 | “Windows Update Check”     |
+| Persistence       | Create Local Account  | T1136.001 | User “support” added       |
+| Credential Access | OS Credential Dumping | T1003.001 | sekurlsa::logonpasswords   |
+| Command & Control | Web Protocols         | T1071.001 | HTTPS to 78.141.196.6      |
+| Exfiltration      | Exfiltration Over Web | T1041     | discord.com                |
+| Impact            | Indicator Removal     | T1070.001 | wevtutil.exe clearing logs |
+
 A. Indicators of Compromise (IOCs)
 Category	Indicator	Description
 Attacker IP	88.97.178.12	Initial access source
