@@ -1,7 +1,8 @@
 # 📘 Azuki Incident – Full Threat Hunt Report
 
 Threat Hunting Report – GitHub Portfolio Version
-SUMMARY OF FINDINGS
+
+## SUMMARY OF FINDINGS
 
 Initial access occurred via a successful RemoteInteractive login from 88.97.178.12, compromising user kenji.sato on host azuki-sl.
 
