@@ -18,19 +18,20 @@ Command-and-Control (C2) communications established using both 78.141.196.6 (HTT
 
 Lateral movement attempts made toward internal host 10.1.0.188 using cmdkey and mstsc.exe.
 
-WHO, WHAT, WHEN, WHERE, WHY, HOW
-WHO
-Attacker
+## WHO, WHAT, WHEN, WHERE, WHY, HOW
 
-Source IP: 88.97.178.12
+### WHO
+### Attacker
 
-C2 Infrastructure: 78.141.196.6 (HTTPS), discord.com (exfiltration)
+- Source IP: 88.97.178.12
 
-Compromised
+- C2 Infrastructure: 78.141.196.6 (HTTPS), discord.com (exfiltration)
 
-Account: kenji.sato
+- Compromised
 
-Host: azuki-sl
+- Account: kenji.sato
+
+- Host: azuki-sl
 
 WHAT (Attack Narrative)
 
