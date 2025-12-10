@@ -35,34 +35,33 @@ Lateral movement attempts made toward internal host 10.1.0.188 using cmdkey and 
 
 ## WHAT (Attack Narrative)
 
-RemoteInteractive logon from a public IP compromised host azuki-sl.
+1. RemoteInteractive logon from a public IP compromised host azuki-sl.
 
-Attacker performed network discovery using arp -a.
+2. Attacker performed network discovery using arp -a.
 
-A hidden staging folder C:\ProgramData\WindowsCache was created with attrib +h +s.
+3. A hidden staging folder C:\ProgramData\WindowsCache was created with attrib +h +s.
 
-Windows Defender was modified to ignore file extensions (.exe, .ps1, .bat) and folder paths in Temp.
+4. Windows Defender was modified to ignore file extensions (.exe, .ps1, .bat) and folder paths in Temp.
 
-Malicious binaries downloaded via certutil.exe from http://78.141.196.6:8080/svchost.exe
-.
+5. Malicious binaries downloaded via certutil.exe from http://78.141.196.6:8080/svchost.exe
 
-Persistence scheduled task Windows Update Check created pointing to malicious svchost.exe.
+6. Persistence scheduled task Windows Update Check created pointing to malicious svchost.exe.
 
-Fake svchost.exe beaconed outbound to 78.141.196.6:443.
+7. Fake svchost.exe beaconed outbound to 78.141.196.6:443.
 
-Credential access achieved using Mimikatz → sekurlsa::logonpasswords.
+8. Credential access achieved using Mimikatz → sekurlsa::logonpasswords.
 
-Archive export-data.zip created for staging.
+9. Archive export-data.zip created for staging.
 
-Exfiltration performed through discord.com over HTTPS.
+10. Exfiltration performed through discord.com over HTTPS.
 
-Event logs cleared using wevtutil cl Security.
+11. Event logs cleared using wevtutil cl Security.
 
-Unauthorized admin account support added to Administrators group.
+12. Unauthorized admin account support added to Administrators group.
 
-Lateral movement attempted to 10.1.0.188 using cmdkey and mstsc.exe.
+13. Lateral movement attempted to 10.1.0.188 using cmdkey and mstsc.exe.
 
-WHEN – Timeline (UTC)
+## WHEN – Timeline (UTC)
 
 (Times condensed for GitHub readability; full timeline available in docx)
 
