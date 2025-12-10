@@ -4,8 +4,6 @@ Threat Hunting Report – GitHub Portfolio Version
 
 ## SUMMARY OF FINDINGS
 
----
-
 Initial access occurred via a successful RemoteInteractive login from 88.97.178.12, compromising user kenji.sato on host azuki-sl.
 
 Discovery actions included ARP cache enumeration, indicating situational awareness and network mapping.
