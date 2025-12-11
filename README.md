@@ -149,7 +149,7 @@ Weak remote access controls allowed successful RemoteInteractive login using com
 3. Discovery → Host/network enumeration via ARP
    - Leveraging prior host and account context, I queried for ARP activity to validate potential network discovery. Logs show the attacker executed ARP commands to enumerate the host’s ARP cache.
    <img width="531" height="109" alt="Discovery_KQL" src="https://github.com/user-attachments/assets/1c66686b-dcae-4953-9600-9b1b454cc14d" />
-   <img width="883" height="259" alt="ARP EXE" src="https://github.com/user-attachments/assets/960b1b05-9594-4f89-b81a-c76e12560451" />
+   <img width="883" height="259" alt="ARP EXE" src="https://github.com/user-attachments/assets/a0fbfc59-9f2c-495c-bfef-0eee0ed3ec7b" />
 
 5. Defense Evasion → Hidden folder, Defender exclusions, log clearing
 
