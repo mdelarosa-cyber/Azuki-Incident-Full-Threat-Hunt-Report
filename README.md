@@ -144,7 +144,7 @@ Weak remote access controls allowed successful RemoteInteractive login using com
 1. Initial Access → Remote login via compromised credentials
    - Identified a successful remote logon from external IP address 88.97.178.12 on 2025-11-19 at 11:55:03 UTC. This activity is assessed as the likely point of initial access.
    <img width="650" height="118" alt="Initial Access Query" src="https://github.com/user-attachments/assets/dc3a7a55-4491-4a6a-a238-2cad6179d094" />
-   <img width="1153" height="433" alt="Initial Access IP, AccountName" src="https://github.com/user-attachments/assets/877a6c76-aa4a-4de1-8dd9-51a56e303315" />
+   <img width="1153" height="433" alt="Initial Access IP, AccountName" src="https://github.com/user-attachments/assets/e53376e1-f341-4f1e-9320-33f9bbabd9b6" />
 
 
 3. Discovery → Host/network enumeration via ARP
