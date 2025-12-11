@@ -98,14 +98,14 @@ Lateral movement attempts made toward internal host 10.1.0.188 using cmdkey and 
 
 | Time (UTC) | Event                                               |
 | ---------- | --------------------------------------------------- |
-| 11:55:03   | RemoteInteractive logon from 88.97.178.12           |
-| 18:49:27   | Windows Defender exclusions added                   |
-| 19:04:01   | ARP cache enumeration (`arp -a`)                    |
-| 19:07:46   | Malicious scheduled task created                    |
-| 19:08:26   | Mimikatz module `sekurlsa::logonpasswords` executed |
+| 2025-11-19T11:55:03.2854924Z | RemoteInteractive logon from 88.97.178.12           |
+| 2025-11-19T18:49:27.6830204Z | Windows Defender exclusions added                   |
+| 2025-11-19T19:04:01.773778Z  | ARP cache enumeration (`arp -a`)                    |
+| 2025-11-19T19:07:46.9796512Z | Malicious scheduled task created                    |
+| 2025-11-19T19:08:26.2804285Z | Mimikatz module `sekurlsa::logonpasswords` executed |
 | 2025-11-19T19:09:21.4234133Z | C2 communication to 78.141.196.6 + discord.com      |
-| Later      | Logs cleared (`wevtutil.exe cl security`)           |
-| Later      | Account "support" added to Administrators           |
+| 2025-11-19T19:11:39.0934399Z | Logs cleared (`wevtutil.exe cl security`)           |
+| 2025-11-19T19:09:53.0528848Z | Account "support" added to Administrators           |
 
 ## WHERE
 ### Compromised Host: azuki-sl
