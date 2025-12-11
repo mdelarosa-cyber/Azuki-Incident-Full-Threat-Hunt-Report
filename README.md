@@ -170,14 +170,35 @@ C:\Users\KENJI~1.SAT\AppData\Local\Temp, created on 2025-11-19T18:49:27.6830204Z
    <img width="661" height="127" alt="Defenseevasion4" src="https://github.com/user-attachments/assets/a1285069-43c3-4793-9fd2-feb1823b13a3" />
    <img width="1511" height="135" alt="Defense4evasion" src="https://github.com/user-attachments/assets/64a0d5d8-4453-4374-9057-37e01541abb3" />
 
-
 9. Persistence → Scheduled task + admin account “support”
+   - I reviewed DeviceProcessEvents for evidence of malicious scheduled task creation. I identified a suspicious task named “Windows Update Check” created on 2025-11-19T19:07:46.9796512Z on azuki-sl. This task was added by the attacker to maintain persistence.
+The schtasks.exe /create command included a /tr argument pointing to the malware executable, indicating which payload was configured to run automatically.
+   <img width="742" height="131" alt="Persistence1" src="https://github.com/user-attachments/assets/19b4b823-131d-49ba-a23b-b652290d86bd" />
+   <img width="1283" height="107" alt="Persistence1Results" src="https://github.com/user-attachments/assets/a93e14fc-86d6-4e85-95e4-2e2a1f09b638" />
 
-10. Credential Access → Mimikatz dump from LSASS
+11. Credential Access → Mimikatz dump from LSASS
+    - I reviewed DeviceFileEvents for executables written to the attacker’s staging directory, C:\ProgramData\WindowsCache, and specifically looked for short or abbreviated filenames commonly used to disguise malicious tools. This analysis identified mm.exe, which is associated with Mimikatz.
+    <img width="668" height="134" alt="credential_access1" src="https://github.com/user-attachments/assets/d9ea6da5-3569-4e2c-933d-6d96bd0eb5a6" />
+    <img width="813" height="135" alt="credential1access" src="https://github.com/user-attachments/assets/7728bb7a-61e4-47e4-a9df-855990a36376" />
+    - During process command-line analysis, I identified execution consistent with credential-dumping tools that use the module::command syntax (e.g., Mimikatz). The attacker invoked the sekurlsa::logonpasswords module, which targets LSASS to extract stored credentials, including plaintext passwords, NTLM hashes, and Kerberos tickets.  This activity occurred on 2025-11-19T19:08:26.2804285Z.
+    <img width="666" height="120" alt="memoryextractionmodule" src="https://github.com/user-attachments/assets/4923074a-518e-4752-94fc-44843db7ea65" />
+    <img width="1210" height="200" alt="memory1extractionModule" src="https://github.com/user-attachments/assets/fb272926-9225-4c4e-80bf-b816125ff5c0" />
 
-11. C2 → HTTPS beaconing + Discord-based exfil
+13. C2 → HTTPS beaconing + Discord-based exfil
+    - To assess potential data exfiltration activity, I followed guidance to analyze outbound HTTPS traffic and determine whether the attacker leveraged cloud storage or communication platforms commonly abused for data theft. The methodology included:
 
-12. Lateral Movement → Use of mstsc.exe targeting 10.1.0.188
+Reviewing DeviceNetworkEvents for suspicious outbound connections
+
+Identifying traffic to file-sharing or messaging services
+
+Filtering for processes associated with the attacker’s staging directory (WindowsCache) observed earlier in the intrusion
+
+Based on this approach, I executed the following KQL query to inspect outbound HTTPS connections:
+   <img width="959" height="165" alt="exfiltration channel" src="https://github.com/user-attachments/assets/26f5f31b-af04-4695-9578-d3b1626d2cd2" />
+   - This query isolated outbound network activity originating from the malicious process executing out of the attacker-created WindowsCache directory, showing connections to discord.com.
+   <img width="647" height="145" alt="Command control1" src="https://github.com/user-attachments/assets/96f1b779-cd46-4f4d-bd48-fd7116c98afd" />
+
+15. Lateral Movement → Use of mstsc.exe targeting 10.1.0.188
 
 ## IMPACT ASSESSMENT
 ### Actual Impact
