@@ -199,6 +199,11 @@ C:\Users\KENJI~1.SAT\AppData\Local\Temp, created on 2025-11-19T18:49:27.6830204Z
       <img width="647" height="145" alt="Command control1" src="https://github.com/user-attachments/assets/96f1b779-cd46-4f4d-bd48-fd7116c98afd" />
 
 ### 8. Lateral Movement → Use of mstsc.exe targeting 10.1.0.188
+   - To identify which systems the attacker attempted to access during lateral movement, I analyzed remote authentication and connection commands executed late in the intrusion timeline. Following the investigative guidance, I searched for the use of cmdkey and mstsc, which are commonly leveraged by adversaries to store credentials or initiate Remote Desktop connections to internal hosts.
+I then executed the following KQL query:
+   <img width="672" height="143" alt="lateral_Movement" src="https://github.com/user-attachments/assets/af7c0c8c-5e88-4534-98ab-0df609540043" />
+   - The results showed that the attacker attempted to access the internal system at 10.1.0.188 during lateral movement activity. This host appears to have been the attacker’s intended next-hop target, likely selected for its perceived access to sensitive data or elevated privileges.
+   <img width="935" height="168" alt="lateral1Movement" src="https://github.com/user-attachments/assets/cf66d2f9-0320-4980-8839-81263482659a" />
 
 ## IMPACT ASSESSMENT
 ### Actual Impact
