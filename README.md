@@ -1,6 +1,18 @@
 # 📘 Threat Hunt Report: Azuki Incident
 
-Threat Hunting Report – GitHub Portfolio Version
+Date: 12/10/2025
+
+### Platforms and Tools Used:
+
+- Microsoft Defender for Endpoint (Advanced Hunting), Microsoft 365 Defender Portal, Kusto Query Language (KQL), MITRE ATT&CK Framework, Windows Event Telemetry (Process, Registry, Network, File, Logon), Microsoft Word / GitHub Markdown reporting
+
+### Detected Attacker Tooling (LOLBins):
+
+- certutil.exe, wevtutil.exe, arp.exe, attrib.exe, schtasks.exe, mstsc.exe, cmdkey.exe, net.exe
+
+### Cloud/SaaS Channels Identified:
+
+- discord.com (exfiltration/C2), External malicious server at 78.141.196.6
 
 ## SUMMARY OF FINDINGS
 
