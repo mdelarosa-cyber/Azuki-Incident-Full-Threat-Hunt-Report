@@ -103,7 +103,7 @@ Lateral movement attempts made toward internal host 10.1.0.188 using cmdkey and 
 | 19:04:01   | ARP cache enumeration (`arp -a`)                    |
 | 19:07:46   | Malicious scheduled task created                    |
 | 19:08:26   | Mimikatz module `sekurlsa::logonpasswords` executed |
-| Various    | C2 communication to 78.141.196.6 + discord.com      |
+| 2025-11-19T19:09:21.4234133Z | C2 communication to 78.141.196.6 + discord.com      |
 | Later      | Logs cleared (`wevtutil.exe cl security`)           |
 | Later      | Account "support" added to Administrators           |
 
