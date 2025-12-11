@@ -14,6 +14,25 @@ Date: 12/10/2025
 
 - discord.com (exfiltration/C2), External malicious server at 78.141.196.6
 
+## Scenario Overview - Azuki Import/Export Incident
+
+Azuki Import/Export Trading Co. (梓貿易株式会社) is a small shipping logistics company (23 employees) operating between Japan and Southeast Asia. The security investigation was initiated after a competitor undercut Azuki’s 6-year shipping contract by exactly 3%, and sensitive supplier contracts and pricing data were later observed on underground forums. This strongly suggested a targeted compromise with data theft motivated by competitive and financial gain.
+
+The investigation focused on a single compromised endpoint, AZUKI-SL, an IT admin workstation, using Microsoft Defender for Endpoint (MDE) telemetry as the primary evidence source. The hunt aimed to answer core incident response questions:
+
+Initial access method – How did the attacker first get in?
+
+Compromised accounts – Which identities were abused?
+
+Data stolen – What information was accessed or staged?
+
+Exfiltration method – How did the data leave the environment?
+
+Persistence – Did the attacker maintain ongoing access?
+
+This scenario was designed as a full end-to-end professional threat hunt, emphasizing methodology over simple “flag hunting.” The workflow followed a structured process: reviewing the investigation guide, iterating through each attack stage (initial access, discovery, defense evasion, persistence, credential access, C2, lateral movement, and exfiltration), and documenting findings, queries, IOCs, and the final timeline in a formal investigation report—mirroring real SOC investigation practices.
+
+
 ## SUMMARY OF FINDINGS
 
 Initial access occurred via a successful RemoteInteractive login from 88.97.178.12, compromising user kenji.sato on host azuki-sl.
