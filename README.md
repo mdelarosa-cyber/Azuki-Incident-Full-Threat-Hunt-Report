@@ -146,20 +146,22 @@ Weak remote access controls allowed successful RemoteInteractive login using com
    <img width="650" height="118" alt="Initial Access Query" src="https://github.com/user-attachments/assets/dc3a7a55-4491-4a6a-a238-2cad6179d094" />
    <img width="1153" height="433" alt="Initial Access IP, AccountName" src="https://github.com/user-attachments/assets/e53376e1-f341-4f1e-9320-33f9bbabd9b6" />
 
-
 3. Discovery → Host/network enumeration via ARP
+   - Leveraging prior host and account context, I queried for ARP activity to validate potential network discovery. Logs show the attacker executed ARP commands to enumerate the host’s ARP cache.
+   <img width="531" height="109" alt="Discovery_KQL" src="https://github.com/user-attachments/assets/1c66686b-dcae-4953-9600-9b1b454cc14d" />
+   <img width="883" height="259" alt="ARP EXE" src="https://github.com/user-attachments/assets/960b1b05-9594-4f89-b81a-c76e12560451" />
 
-4. Defense Evasion → Hidden folder, Defender exclusions, log clearing
+5. Defense Evasion → Hidden folder, Defender exclusions, log clearing
 
-5. Execution → PowerShell script wupdate.ps1
+6. Execution → PowerShell script wupdate.ps1
 
-6. Persistence → Scheduled task + admin account “support”
+7. Persistence → Scheduled task + admin account “support”
 
-7. Credential Access → Mimikatz dump from LSASS
+8. Credential Access → Mimikatz dump from LSASS
 
-8. C2 → HTTPS beaconing + Discord-based exfil
+9. C2 → HTTPS beaconing + Discord-based exfil
 
-9. Lateral Movement → Use of mstsc.exe targeting 10.1.0.188
+10. Lateral Movement → Use of mstsc.exe targeting 10.1.0.188
 
 ## IMPACT ASSESSMENT
 ### Actual Impact
