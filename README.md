@@ -158,6 +158,7 @@ Threat actors commonly use attrib.exe to hide directories used for data staging 
    <img width="1192" height="107" alt="Defense_Evasion" src="https://github.com/user-attachments/assets/1480c6b8-32f7-4041-b1d7-25a89c4e4c48" />
    <img width="974" height="364" alt="attrib_exe" src="https://github.com/user-attachments/assets/7e416080-a07f-42bf-aea5-8d3449ea4b6c" />
    - Queried DeviceRegistryEvents for Defender file-extension exclusions and identified three malicious exclusions—.bat, .ps1, .exe—using the following       KQL query.
+   
    <img width="619" height="108" alt="Defense_Evasion2" src="https://github.com/user-attachments/assets/37bf3dfb-b49b-4dca-9c92-775163dbf5ec" />
    <img width="1188" height="133" alt="Defense 2 evasion" src="https://github.com/user-attachments/assets/f7f196da-2d14-4dd4-adf1-2efe56ec5119" />
    - I reviewed Windows Defender exclusion settings to identify any temporary folder paths potentially created by the attacker. The search revealed an exclusion for
