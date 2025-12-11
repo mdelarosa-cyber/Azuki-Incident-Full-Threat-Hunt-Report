@@ -27,7 +27,7 @@ Lateral movement attempts made toward internal host 10.1.0.188 using cmdkey and 
 
 - C2 Infrastructure: 78.141.196.6 (HTTPS), discord.com (exfiltration)
 
-- Compromised
+### Compromised
 
 - Account: kenji.sato
 
