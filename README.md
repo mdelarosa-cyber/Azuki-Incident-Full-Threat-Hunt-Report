@@ -164,16 +164,20 @@ Threat actors commonly use attrib.exe to hide directories used for data staging 
 C:\Users\KENJI~1.SAT\AppData\Local\Temp, created on 2025-11-19T18:49:27.6830204Z on azuki-sl. The following KQL query was used to identify this modification.
    <img width="643" height="138" alt="Defense_Evasion3" src="https://github.com/user-attachments/assets/27b9e283-0c83-419e-a9f0-6a686b29f479" />
    <img width="939" height="174" alt="Defense3Evasion" src="https://github.com/user-attachments/assets/6ddd06e2-c06a-40ef-8838-1d4e368afeb2" />
-
+   - 
 7. Execution → PowerShell script wupdate.ps1
+   - I reviewed built-in Windows tools with network capabilities that could have been leveraged during the attack. The analysis showed that certutil.exe was used to download a file from http://78.141.196.6:8080/svchost.exe and save it into the hidden directory C:\ProgramData\WindowsCache\svchost.exe.
+   <img width="661" height="127" alt="Defenseevasion4" src="https://github.com/user-attachments/assets/a1285069-43c3-4793-9fd2-feb1823b13a3" />
+   <img width="1511" height="135" alt="Defense4evasion" src="https://github.com/user-attachments/assets/64a0d5d8-4453-4374-9057-37e01541abb3" />
 
-8. Persistence → Scheduled task + admin account “support”
 
-9. Credential Access → Mimikatz dump from LSASS
+9. Persistence → Scheduled task + admin account “support”
 
-10. C2 → HTTPS beaconing + Discord-based exfil
+10. Credential Access → Mimikatz dump from LSASS
 
-11. Lateral Movement → Use of mstsc.exe targeting 10.1.0.188
+11. C2 → HTTPS beaconing + Discord-based exfil
+
+12. Lateral Movement → Use of mstsc.exe targeting 10.1.0.188
 
 ## IMPACT ASSESSMENT
 ### Actual Impact
