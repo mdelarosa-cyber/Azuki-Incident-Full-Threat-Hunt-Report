@@ -141,17 +141,17 @@ Weak remote access controls allowed successful RemoteInteractive login using com
 
 ## HOW – Attack Chain Overview
 
-1. Initial Access → Remote login via compromised credentials
+### 1. Initial Access → Remote login via compromised credentials
    - Identified a successful remote logon from external IP address 88.97.178.12 on 2025-11-19 at 11:55:03 UTC. This activity is assessed as the likely          point of initial access.
    <img width="650" height="118" alt="Initial Access Query" src="https://github.com/user-attachments/assets/dc3a7a55-4491-4a6a-a238-2cad6179d094" />
    <img width="1153" height="433" alt="Initial Access IP, AccountName" src="https://github.com/user-attachments/assets/e53376e1-f341-4f1e-9320-33f9bbabd9b6" />
 
-2. Discovery → Host/network enumeration via ARP
+### 2. Discovery → Host/network enumeration via ARP
    - Leveraging prior host and account context, I queried for ARP activity to validate potential network discovery. Logs show the attacker executed ARP commands to enumerate the host’s ARP cache.
    <img width="531" height="109" alt="Discovery_KQL" src="https://github.com/user-attachments/assets/1c66686b-dcae-4953-9600-9b1b454cc14d" />
    <img width="883" height="259" alt="ARP EXE" src="https://github.com/user-attachments/assets/a0fbfc59-9f2c-495c-bfef-0eee0ed3ec7b" />
 
-3. Defense Evasion → Hidden folder, Defender exclusions, log clearing
+### 3. Defense Evasion → Hidden folder, Defender exclusions, log clearing
    - Analysis of DeviceProcessEvents revealed the execution of:
 attrib.exe +h +s C:\ProgramData\WindowsCache.
 Threat actors commonly use attrib.exe to hide directories used for data staging or persistence, indicating potential preparation for exfiltration.
@@ -166,26 +166,26 @@ C:\Users\KENJI~1.SAT\AppData\Local\Temp, created on 2025-11-19T18:49:27.6830204Z
    <img width="939" height="174" alt="Defense3Evasion" src="https://github.com/user-attachments/assets/6ddd06e2-c06a-40ef-8838-1d4e368afeb2" />
    - 
 ### 4. Execution → PowerShell script wupdate.ps1
-      - I reviewed built-in Windows tools with network capabilities that could have been leveraged during the attack. The analysis showed that certutil.exe was used to download a file from http://78.141.196.6:8080/svchost.exe and save it into the hidden directory C:\ProgramData\WindowsCache\svchost.exe.
-      <img width="661" height="127" alt="Defenseevasion4" src="https://github.com/user-attachments/assets/a1285069-43c3-4793-9fd2-feb1823b13a3" />
-      <img width="1511" height="135" alt="Defense4evasion" src="https://github.com/user-attachments/assets/64a0d5d8-4453-4374-9057-37e01541abb3" />
+   - I reviewed built-in Windows tools with network capabilities that could have been leveraged during the attack. The analysis showed that certutil.exe      was used to download a file from http://78.141.196.6:8080/svchost.exe and save it into the hidden directory C:\ProgramData\WindowsCache\svchost.exe.
+   <img width="661" height="127" alt="Defenseevasion4" src="https://github.com/user-attachments/assets/a1285069-43c3-4793-9fd2-feb1823b13a3" />
+   <img width="1511" height="135" alt="Defense4evasion" src="https://github.com/user-attachments/assets/64a0d5d8-4453-4374-9057-37e01541abb3" />
 
 ### 5. Persistence → Scheduled task + admin account “support”
-      - I reviewed DeviceProcessEvents for evidence of malicious scheduled task creation. I identified a suspicious task named “Windows Update Check” created    on 2025-11-19T19:07:46.9796512Z on azuki-sl. This task was added by the attacker to maintain persistence.
-      The schtasks.exe /create command included a /tr argument pointing to the malware executable, indicating which payload was configured to run automatically.
-      <img width="742" height="131" alt="Persistence1" src="https://github.com/user-attachments/assets/19b4b823-131d-49ba-a23b-b652290d86bd" />
-      <img width="1283" height="107" alt="Persistence1Results" src="https://github.com/user-attachments/assets/a93e14fc-86d6-4e85-95e4-2e2a1f09b638" />
+   - I reviewed DeviceProcessEvents for evidence of malicious scheduled task creation. I identified a suspicious task named “Windows Update Check” created    on 2025-11-19T19:07:46.9796512Z on azuki-sl. This task was added by the attacker to maintain persistence.
+   The schtasks.exe /create command included a /tr argument pointing to the malware executable, indicating which payload was configured to run automatically.
+   <img width="742" height="131" alt="Persistence1" src="https://github.com/user-attachments/assets/19b4b823-131d-49ba-a23b-b652290d86bd" />
+   <img width="1283" height="107" alt="Persistence1Results" src="https://github.com/user-attachments/assets/a93e14fc-86d6-4e85-95e4-2e2a1f09b638" />
 
 ### 6. Credential Access → Mimikatz dump from LSASS
-    - I reviewed DeviceFileEvents for executables written to the attacker’s staging directory, C:\ProgramData\WindowsCache, and specifically looked for short or abbreviated filenames commonly used to disguise malicious tools. This analysis identified mm.exe, which is associated with Mimikatz.
-    <img width="668" height="134" alt="credential_access1" src="https://github.com/user-attachments/assets/d9ea6da5-3569-4e2c-933d-6d96bd0eb5a6" />
-    <img width="813" height="135" alt="credential1access" src="https://github.com/user-attachments/assets/7728bb7a-61e4-47e4-a9df-855990a36376" />
-    - During process command-line analysis, I identified execution consistent with credential-dumping tools that use the module::command syntax (e.g., Mimikatz). The attacker invoked the sekurlsa::logonpasswords module, which targets LSASS to extract stored credentials, including plaintext passwords, NTLM hashes, and Kerberos tickets.  This activity occurred on 2025-11-19T19:08:26.2804285Z.
-    <img width="666" height="120" alt="memoryextractionmodule" src="https://github.com/user-attachments/assets/4923074a-518e-4752-94fc-44843db7ea65" />
-    <img width="1210" height="200" alt="memory1extractionModule" src="https://github.com/user-attachments/assets/fb272926-9225-4c4e-80bf-b816125ff5c0" />
+   - I reviewed DeviceFileEvents for executables written to the attacker’s staging directory, C:\ProgramData\WindowsCache, and specifically looked for short or abbreviated filenames commonly used to disguise malicious tools. This analysis identified mm.exe, which is associated with Mimikatz.
+   <img width="668" height="134" alt="credential_access1" src="https://github.com/user-attachments/assets/d9ea6da5-3569-4e2c-933d-6d96bd0eb5a6" />
+   <img width="813" height="135" alt="credential1access" src="https://github.com/user-attachments/assets/7728bb7a-61e4-47e4-a9df-855990a36376" />
+   - During process command-line analysis, I identified execution consistent with credential-dumping tools that use the module::command syntax (e.g., Mimikatz). The attacker invoked the sekurlsa::logonpasswords module, which targets LSASS to extract stored credentials, including plaintext passwords, NTLM hashes, and Kerberos tickets.  This activity occurred on 2025-11-19T19:08:26.2804285Z.
+   <img width="666" height="120" alt="memoryextractionmodule" src="https://github.com/user-attachments/assets/4923074a-518e-4752-94fc-44843db7ea65" />
+   <img width="1210" height="200" alt="memory1extractionModule" src="https://github.com/user-attachments/assets/fb272926-9225-4c4e-80bf-b816125ff5c0" />
 
 ### 7. C2 → HTTPS beaconing + Discord-based exfil
-    - To assess potential data exfiltration activity, I followed guidance to analyze outbound HTTPS traffic and determine whether the attacker leveraged cloud storage or communication platforms commonly abused for data theft. The methodology included:
+   - To assess potential data exfiltration activity, I followed guidance to analyze outbound HTTPS traffic and determine whether the attacker leveraged cloud storage or communication platforms commonly abused for data theft. The methodology included:
 
       Reviewing DeviceNetworkEvents for suspicious outbound connections
 
