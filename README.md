@@ -1,4 +1,4 @@
-# 📘 Azuki Incident – Full Threat Hunt Report
+# 📘 Threat Hunt Report: Azuki Incident
 
 Threat Hunting Report – GitHub Portfolio Version
 
