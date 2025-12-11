@@ -274,5 +274,10 @@ I then executed the following KQL query:
 | Exfiltration      | Exfiltration Over Web | T1041     | discord.com                |
 | Impact            | Indicator Removal     | T1070.001 | wevtutil.exe clearing logs |
 
-Final Summary:
+### Final Summary:
 
+This threat hunt revealed a complete intrusion chain on AZUKI-SL, beginning with a RemoteInteractive logon from 88.97.178.12 and escalating through multiple attacker tradecraft stages. The adversary established hidden staging folders, modified Defender exclusions, deployed a malicious svchost.exe, and maintained persistence through scheduled tasks and creation of a rogue administrator account.
+
+Credential harvesting via Mimikatz allowed the attacker to access high-value authentication artifacts, while outbound HTTPS traffic confirmed active C2 communication and data exfiltration to discord.com. Attempts to pivot laterally toward 10.1.0.188 indicate the attacker intended to expand their footprint toward systems with greater privilege or sensitive data.
+
+The combination of credential compromise, data staging/exfiltration, and persistence artifacts represents a high-severity breach requiring immediate containment and long-term hardening of authentication, EDR, logging, and access policies.
