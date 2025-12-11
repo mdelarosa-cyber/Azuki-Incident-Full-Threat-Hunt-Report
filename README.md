@@ -274,4 +274,5 @@ I then executed the following KQL query:
 | Exfiltration      | Exfiltration Over Web | T1041     | discord.com                |
 | Impact            | Indicator Removal     | T1070.001 | wevtutil.exe clearing logs |
 
-C. KQL Queries Used
+Final Summary:
+
